@@ -1,6 +1,6 @@
-from secant import Secant
-from bisection import Bisection
-from newton import Newton_clean
+from methods.secant import Secant
+from methods.bisection import Bisection
+from methods.newton import Newton_clean
 import time, pprint as pp
 import matplotlib.pyplot as plt
 import numpy as np

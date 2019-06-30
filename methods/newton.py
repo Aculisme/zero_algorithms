@@ -21,6 +21,9 @@ def Newton(f, fp, inita, tol, maxIt=50, test=False):
         xlist.append(i)
         ylist.append(dist)
         y2list.append(x)
+
+        print(dist)
+
         xo = x
         xn = x - ( f(x) / fp(x) )
         if abs(xn - x) < tol:

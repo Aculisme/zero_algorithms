@@ -24,6 +24,8 @@ def Secant(f, inita, initb, tol, maxIt=50,test=False):
         ylist.append(dist)
         y2list.append(x)
 
+        print(dist)
+
         xn = x - ( f(x) * (x - xo) ) / ( f(x) - f(xo) )
         
         if abs(xn - x) < tol:

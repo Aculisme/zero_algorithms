@@ -2,11 +2,13 @@ from methods.secant import Secant
 from methods.bisection import Bisection
 from methods.newton import Newton
 import matplotlib.pyplot as plt
+import pprint as pp
 plt.style.use('seaborn-whitegrid')
 fig, ax = plt.subplots()
 
+
 def f(x):
-    return x**2 - 7
+    return x**2 - 5 # x**2 + 2*x + 2 # (x+3)*(x-6.25)# x**2 - 7
     
 def fp(x):
     return 2*x
@@ -21,14 +23,16 @@ def myplot(x,y,y2,color='tab:black',label="yes"):
     plt.xlim(0,8)
     fig.tight_layout()
 
-x, y, y2 = Bisection(f, 2, 6, 1e-10,maxIt=1000,test=True) 
-myplot(x, y, y2,color='tab:green',label="Bisection")
+# x, y, y2 = Bisection(f, 3.1, 4.1, 1e-15,maxIt=1000,test=True) 
+# myplot(x, y, y2,color='tab:green',label="Bisection")
 
-x, y, y2 = Secant(f, 3, 6, 1e-10,maxIt=1000,test=True)
-myplot(x, y, y2,color='black',label="Secant")
+# x, y, y2 = Secant(f, 0.51232, 0.51425, 1e-10,test=True)
+# myplot(x, y, y2,color='black',label="Secant")
 
 x, y, y2 = Newton(f, fp, 3, 1e-10,maxIt=1000,test=True)  
-myplot(x, y, y2,color='tab:blue',label="Newton")
+# myplot(x, y, y2,color='tab:blue',label="Newton")
 
-plt.legend(loc='upper right')
-plt.show()
+print(x,y,y2)
+
+# plt.legend(loc='upper right')
+# plt.show()

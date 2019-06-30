@@ -2,7 +2,7 @@ import numpy as np
 
 def Bisection(f, r1, r2, tol, maxIt=50, test=False):
     """
-    f() is the function to be used
+    f() is the function to be used, taking an input of x and returning f(x)
     init is the initial guess
     tol is the tolerance
     maxIt is the maximum number of iterations
@@ -28,15 +28,13 @@ def Bisection(f, r1, r2, tol, maxIt=50, test=False):
         ylist.append(dist)
         y2list.append(c)
 
-        
-        print(b,c)
+        print(dist)
 
         if abs(b-c) < tol:
             break
 
         if np.sign( f(b) ) * np.sign( f(c) ) <= 0:
             a = c
-            print("yes")
         else:
             b = c
         
@@ -47,30 +45,28 @@ def Bisection(f, r1, r2, tol, maxIt=50, test=False):
 
     return c
 
+
+
 import numpy as np
 
-
-def Bisection_clean(f, r1, r2, tol, maxIt=50):
+def Bisection_clean(f, a, b, tol, maxIt=50):
     """
-    [f] is the function to be used
-    [r1] is the first initial guess
-    [r2] is the second initial guess
-    [tol] is the tolerance
-    [maxIt] is the maximum number of iterations
+    [f] is the function to be used, taking an input of x and returning f(x)
+    [a] is the bottom bound of the initial interval
+    [b] is the top bound of the initial interval
+    [tol] is the tolerance at which the method should stop. (e.g. 1e-15)
+    [maxIt] is the maximum number of iterations after which the method should stop.
     """
-    a = r1
-    b = r2
     c = 0
-
     i = 0
     while i < maxIt:
         c = ( (a + b) / 2 )
-        print(b,c)
         if abs(b-c) < tol:
+            break
+        elif c == 0:
             break
         if np.sign( f(b) ) * np.sign( f(c) ) <= 0:
             a = c
-            print("true")
         else:
             b = c
         i+=1
