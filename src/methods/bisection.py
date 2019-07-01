@@ -77,3 +77,12 @@ class Bisection(object):
 
     def _half(self,a,b):
         return (a + b) / 2
+
+    
+    def __repr__(self):
+        # return "Bisection "
+        raise NotImplementedError
+    
+
+    def __str__(self):
+        return "Bisection method"

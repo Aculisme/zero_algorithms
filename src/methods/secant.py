@@ -61,3 +61,12 @@ class Secant(object):
             i+=1
 
         return iteration_list, estimate_list, dist_list
+
+    
+    def __repr__(self):
+        # return "Secant "
+        raise NotImplementedError
+    
+
+    def __str__(self):
+        return "Secant method"

@@ -1,5 +1,5 @@
 from ..src.methods import Newton
-from .function_examples import f_root
+from ..src.function_examples import f_root
 
 
 def test_accuracy():

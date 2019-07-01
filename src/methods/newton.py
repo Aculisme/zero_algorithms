@@ -55,3 +55,12 @@ class Newton(object):
             i+=1
             
         return iteration_list, estimate_list, dist_list
+    
+
+    def __repr__(self):
+        # return "Newton "
+        raise NotImplementedError
+    
+
+    def __str__(self):
+        return "Newton method"
