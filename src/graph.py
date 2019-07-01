@@ -1,6 +1,6 @@
-from methods.secant import Secant
-from methods.bisection import Bisection
-from methods.newton import Newton
+from zeroalgs.methods.secant import secant
+from zeroalgs.methods.bisection import bisection
+from zeroalgs.methods.newton import newton
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-whitegrid')
 fig, ax = plt.subplots()
@@ -21,13 +21,13 @@ def myplot(x,y,y2,color='tab:black',label="yes"):
     plt.xlim(0,8)
     fig.tight_layout()
 
-x, y, y2 = Bisection(f, 2, 6, 1e-10,maxIt=1000,test=True) 
+x, y, y2 = bisection(f, 2, 6, 1e-10,maxIt=1000,test=True) 
 myplot(x, y, y2,color='tab:green',label="Bisection")
 
-x, y, y2 = Secant(f, 3, 6, 1e-10,maxIt=1000,test=True)
+x, y, y2 = secant(f, 3, 6, 1e-10,maxIt=1000,test=True)
 myplot(x, y, y2,color='black',label="Secant")
 
-x, y, y2 = Newton(f, fp, 3, 1e-10,maxIt=1000,test=True)  
+x, y, y2 = newton(f, fp, 3, 1e-10,maxIt=1000,test=True)  
 myplot(x, y, y2,color='tab:blue',label="Newton")
 
 plt.legend(loc='upper right')

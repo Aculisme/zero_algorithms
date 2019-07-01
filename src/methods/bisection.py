@@ -2,13 +2,13 @@ import numpy as np
 
 
 class Bisection(object):
-    def __init__(self, f):
+    def __init__(self, f=None, **extras):
         """
-        f : a function f(x) that returns 'y', the function applied to it
+        f : a function f(x) that returns 'y', the function applied to x
         """
         self.f = f
 
-    def solve(self, init_a, init_b, tol, max_it=50):
+    def solve(self, init_a=None, init_b=None, tol=None, max_it=50, **extras):
         """fast implementation of the bisection method
         init_a : bottom bound of the initial interval
         init_b : top bound of the initial interval
@@ -34,7 +34,7 @@ class Bisection(object):
         return c
 
 
-    def vsolve(self, init_a, init_b, tol, max_it=50):
+    def vsolve(self, init_a=None, init_b=None, tol=None, max_it=50, **extras):
         """verbose implementation of the bisection method
         init_a : bottom bound of the initial interval
         init_b : top bound of the initial interval
