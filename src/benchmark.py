@@ -13,6 +13,12 @@ def benchmark(method):
     return b - a
 
 
+# def time_method(method):
+#     a = time.time()
+#     print("value of the root",method(f,fp,2,1e-10))
+#     print((time.time()-a)*1000," milliseconds")
+
+
 for method in benchmarking_methods:
     tt = benchmark(method)
     print(tt, "seconds")
