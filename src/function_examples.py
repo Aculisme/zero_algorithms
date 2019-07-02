@@ -1,8 +1,6 @@
 import numpy as np
 
 
-# parameter order: f, !fp, init_a, !init_b, tol, !!max_it,
-
 f_root = {
         'name' : 'f_root',
         'f' : lambda x: x**2 - 5,
