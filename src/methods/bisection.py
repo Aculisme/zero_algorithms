@@ -15,8 +15,8 @@ class Bisection(object):
         tol : maximum absolute error after which the method should stop. (e.g. 1e-15)
         max_it : maximum number of iterations after which the method should stop
         """
-        c = 0
         i = 0
+        c = 0
         a = init_a
         b = init_b
         while i < max_it:
@@ -43,9 +43,9 @@ class Bisection(object):
         """
         
         i = 0
-        a = init_a
-        b = init_a
         c = 0
+        a = init_a
+        b = init_b
 
         iteration_list = []
         dist_list = []
@@ -59,8 +59,6 @@ class Bisection(object):
             iteration_list.append(i)
             dist_list.append(dist)
             estimate_list.append(c)
-
-            print(dist)
 
             if abs(b-c) < tol:
                 break
@@ -79,10 +77,13 @@ class Bisection(object):
         return (a + b) / 2
 
     
-    def __repr__(self):
+    def __name__(self):
+        return "Bisection"
+
+    # def __repr__(self):
         # return "Bisection "
-        raise NotImplementedError
+        # raise NotImplementedError
     
 
-    def __str__(self):
-        return "Bisection method"
+    # def __str__(self):
+    #     return "Bisection method"

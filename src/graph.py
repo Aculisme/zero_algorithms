@@ -1,34 +1,28 @@
-from zeroalgs.methods.secant import secant
-from zeroalgs.methods.bisection import bisection
-from zeroalgs.methods.newton import newton
+from .methods import Bisection, Newton, Secant
+from .function_examples import f_root
 import matplotlib.pyplot as plt
-plt.style.use('seaborn-whitegrid')
-fig, ax = plt.subplots()
 
-def f(x):
-    return x**2 - 7
-    
-def fp(x):
-    return 2*x
 
-def myplot(x,y,y2,color='tab:black',label="yes"):
-    plt.xlabel("Function iteration number")
-    # ax.set_xscale('log')    
-    ax2 = ax
-    ax2.set_ylabel('Zero estimation', color=color)
-    ax2.plot(x, y2, color=color,label=label)
-    # ax2.margins(x=0,y=0)
+def plot_methods():
+    plt.style.use('seaborn-whitegrid')
+    fig, ax = plt.subplots()
+    plt.xlabel("Method iteration number")
+    ax.set_ylabel('Zero estimation')
     plt.xlim(0,8)
+
+    # uncomment this line for a basic overview of their rate of convergence
+    # ax.set_yscale('log')    
+
+    methods = [Bisection, Newton, Secant]
+    colors = ['orange','blue','black']
+
+    for method, color in zip(methods, colors):
+        it, est, dist = method(**f_root).vsolve(**f_root) # retrieve from verbose method
+        ax.plot(it, dist, label=method.__name__, color=color) # plot method line
+        ax.plot(it[-1:],dist[-1:],'o', color=color) # add marker for endpoint
+
     fig.tight_layout()
+    plt.legend(loc='upper right')
+    plt.show()
 
-x, y, y2 = bisection(f, 2, 6, 1e-10,maxIt=1000,test=True) 
-myplot(x, y, y2,color='tab:green',label="Bisection")
-
-x, y, y2 = secant(f, 3, 6, 1e-10,maxIt=1000,test=True)
-myplot(x, y, y2,color='black',label="Secant")
-
-x, y, y2 = newton(f, fp, 3, 1e-10,maxIt=1000,test=True)  
-myplot(x, y, y2,color='tab:blue',label="Newton")
-
-plt.legend(loc='upper right')
-plt.show()
+plot_methods()
